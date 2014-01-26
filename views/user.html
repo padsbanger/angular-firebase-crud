@@ -1,23 +1,26 @@
 <div>
 	<div class="row">
-		<img src="img/ajax-loader.gif" ng-show="!loaded" alt="">
+		<p class="text-center"><img src="img/ajax-loader.gif" ng-show="!loaded" alt=""></p>
 	</div>
 	<div ng-show="loaded">
 		<div class="row">
 			<input type="search" ng-model="search" placeholder="Search users">
 		</div>
-        <div class="small-12 columns" ng-repeat='user in users | orderByPriority | filter:search'>
+        <div class="row" ng-repeat='user in users | orderByPriority | filter:search'>
         	<div class="small-9 columns">{{user.name}} </div>
         	<div class="small-3 columns">
             	<ul class="button-group">
-            		<li><a class="small button" href="/#/edit/{{user.$id}}">Edit</a> </li>
-            		<li><a href="#" class="small button" ng-click="deleteUser(user.$id)">X</a></li>
+            		<li><a class="small button" href="/#/edit/{{user.$id}}">
+						<i class="fa fa-pencil-square-o"></i>
+            			Edit</a></li>
+            		<li><a href="#" class="small button" ng-click="deleteUser(user.$id)"><i class="fa fa-times"></i> Delete</a></li>
             	</ul>
         	</div>
         </div>
 		<div class="row">
-			<a href="/#/new" class="small button">Add new user</a>
-			<a href="#"  confirmed-click="clearUsers()" ng-confirm-click="Remove all users ?" class="small alert button" ng-click="clearUsers()">Remove all users</a>
+			<a href="/#/new" class="small button"><i class="fa fa-plus"></i> Add new user</a>
+			<a href="#"  confirmed-click="clearUsers()" ng-confirm-click="Remove all users ?" class="small alert button" ng-click="clearUsers()"><i class="fa fa-exclamation-triangle"></i> Remove all users</a>
 		</div>
+		<div data-alert class="alert-box">{{message}}</div>
 	</div>
 </div>

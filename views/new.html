@@ -1,5 +1,6 @@
 <div class="row">
 	<input type="text" placeholder="Add new user" ng-model="user.name">
-	<a href="#" class="small button" ng-click="addUser(user.name)">Add user</a>
-	<p>{{message}}</p>
+	<button class="small button" ng-click="addUser(user.name)"><i class="fa fa-check"></i> Add user</button>
+	<div data-alert class="alert-box">{{message}}</div>
 </div>
+<a href="/"><i class="fa fa-reply"></i> Return</a>
