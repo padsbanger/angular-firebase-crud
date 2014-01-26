@@ -22,7 +22,7 @@ myApp.controller('UserCtrl', function($scope, UserService, $firebase, $firebaseS
     console.log("User successfully logged out!");
   });
 
-  // TODO: make it working
+  // TODO: make it less buggy, work on real user input
   $scope.login = function() {
     $scope.account.$login('password', {
       email: 'kontakt@michal-lach.pl',
