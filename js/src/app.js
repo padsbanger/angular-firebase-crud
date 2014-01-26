@@ -11,6 +11,10 @@ config(['$routeProvider', '$locationProvider', function($routeProvider, $locatio
 	.when('/edit/:id', {
 		templateUrl: 'views/userEdit.html',
 		controller: 'EditUserCtrl'
+	})
+	.when('/new', {
+		templateUrl: 'views/new.html',
+		controller: 'UserCtrl'
 	});
 	
 }]);

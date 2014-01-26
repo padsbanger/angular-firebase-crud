@@ -35,7 +35,7 @@ var pushState = require('grunt-connect-pushstate/lib/utils').pushState;
       },
       scripts: {
         files: ['js/src/*/*.js', 'js/src/app.js', '*.html', 'views/*.html'],
-        tasks: ['concat:services', 'concat:controllers'],
+        tasks: ['concat:services', 'concat:controllers', 'concat:directives'],
         options: {
           livereload: true,
         }
@@ -133,6 +133,7 @@ grunt.registerTask('serve', function () {
     'mkdir',
     'concat:libs',
     'concat:controllers',
+    'concat:directives',
     'concat:services',
     'less',
     'connect:server',

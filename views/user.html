@@ -1,13 +1,23 @@
-<img src="http://fleq.pl/sklep/img/layout/loading.gif" width="300" height="300" ng-show="!loaded" alt="">
-<div ng-show="loaded">
-	<input type="search" ng-model="search" placeholder="Search users">
-	<ul>
-	<li ng-repeat='user in users | orderByPriority | filter:search'>{{user.name}} <a ng-href="/#/edit/{{user.$id}}">Edit</a> <button ng-click="deleteUser(user.$id)">X</button></li>
-	</ul>
-
-	<input type="text" placeholder="Add new user" ng-model="user.name">
-	<button ng-click="addUser(user.name)">Add user</button> <br>
-		{{message}}
-	<hr>
-	<button ng-click="clearUsers()">Remove all users</button>
+<div>
+	<div class="row">
+		<img src="img/ajax-loader.gif" ng-show="!loaded" alt="">
+	</div>
+	<div ng-show="loaded">
+		<div class="row">
+			<input type="search" ng-model="search" placeholder="Search users">
+		</div>
+        <div class="small-12 columns" ng-repeat='user in users | orderByPriority | filter:search'>
+        	<div class="small-9 columns">{{user.name}} </div>
+        	<div class="small-3 columns">
+            	<ul class="button-group">
+            		<li><a class="small button" href="/#/edit/{{user.$id}}">Edit</a> </li>
+            		<li><a href="#" class="small button" ng-click="deleteUser(user.$id)">X</a></li>
+            	</ul>
+        	</div>
+        </div>
+		<div class="row">
+			<a href="/#/new" class="small button">Add new user</a>
+			<a href="#"  confirmed-click="clearUsers()" ng-confirm-click="Remove all users ?" class="small alert button" ng-click="clearUsers()">Remove all users</a>
+		</div>
+	</div>
 </div>
