@@ -1,8 +1,14 @@
 <div>
 	<div class="row">
-		<p class="text-center"><img src="img/ajax-loader.gif" ng-show="!loaded" alt=""></p>
+		<p class="text-right"><a ng-hide="account.user" href="#"ng-click="login()"><i class="fa fa-sign-in"></i> Login</a>
+			<a href="#"ng-click="register()" ng-hide="account.user"><i class="fa fa-users"></i> Register</a>
+			<a href="#"ng-click="logout()" ng-show="account.user"><i class="fa fa-power-off"></i> Logout</a>
+		</p>
 	</div>
-	<div ng-show="loaded">
+<!-- 	<div class="row">
+		<p class="text-center"><img src="img/ajax-loader.gif" ng-show="!loaded" alt=""></p>
+	</div> -->
+	<div ng-show="account.user">
 		<div class="row">
 			<input type="search" ng-model="search" placeholder="Search users">
 		</div>

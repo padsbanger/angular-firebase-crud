@@ -1,13 +1,47 @@
 'use strict';
 
-myApp.controller('UserCtrl', function($scope, UserService, $firebase) {
+myApp.controller('UserCtrl', function($scope, UserService, $firebase, $firebaseSimpleLogin, $rootScope, $location) {
 
-  $scope.users =  UserService;
-  $scope.message = '';
+  $scope.users = UserService;
+  $scope.isLogged;
+  var dataRef = new Firebase('https://shining-fire-2806.firebaseio.com/users');
+  $scope.account = $firebaseSimpleLogin(dataRef);
 
+
+  // TODO: Fix animation for pulling data
   $scope.users.$on('loaded', function() {
+    console.log('data loaded');
     $scope.loaded = true;
   });
+
+  $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
+    console.log("User " + user.id + " successfully logged in!");
+  });
+
+  $rootScope.$on("$firebaseSimpleLogin:logout", function(e, user) {
+    console.log("User successfully logged out!");
+  });
+
+  // TODO: make it working
+  $scope.login = function() {
+    $scope.account.$login('password', {
+      email: 'kontakt@michal-lach.pl',
+      password: 'root'
+    }).then(function(user) {
+      console.log('Logged in as: ', user.email);
+      $location.path('/');
+    }, function(error) {
+        console.error('Login failed: ', error);
+      });
+  };
+
+  $scope.logout = function() {
+    $scope.account.$logout();
+  }
+
+  $scope.register = function() {
+    $scope.account.$createUser('kontakt@michal-lach.pl', 'root');
+  };
 
   $scope.addUser = function(username) {
     var names = [];

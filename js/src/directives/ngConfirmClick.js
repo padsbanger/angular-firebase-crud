@@ -7,6 +7,8 @@ myApp.directive('ngConfirmClick', [
                     element.bind('click',function (event) {
                         if ( window.confirm(msg) ) {
                             scope.$eval(clickAction);
+                        } else {
+                            return false;
                         }
                     });
                 }
