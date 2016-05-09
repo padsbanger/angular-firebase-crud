@@ -17,6 +17,12 @@ Install project dependencies:
 npm install
 ```
 
+Install front-end dependencies:
+
+```js
+bower install
+```
+
 ## Run the project
 
 ```js
